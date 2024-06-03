@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Prog 2 HTWG</h1>
+        </div>
+    </header>
+    <section id="einleitung">
+        <h2>Einleitung</h2>
+        <div>
+            <h3>Überblick über Programmierung</h3>
+            <ul>
+                <li>Objektorientierte Programmierung</li>
+                <li>Funktionale Programmierung</li>
+                <li>Nebenläufige Programmierung</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Überblick über Konzepte</h3>
+            <ul>
+                <li>Datenstrukturen und Algorythmen</li>
+                <li>Collection-Typen aus der Java API (Behälter)</li>
+                <li>Grafische Benutzeroberflächen</li>
+            </ul>
+        </div>
+    </section>
+    <section id="grundlagen">
+        <h2>Grundlagen</h2>
+        <div>
+            <h3>Statische Typisierung</h3>
+            <p>Jede Variable hat einen Datentyp, der zu Compilierzeit festliegt</p>
+        </div>
+        <div>
+            <h3>Primitve Datentypen und Referenztypen</h3>
+            <p>Primitive Datentypen haben festen Wertebereich und haben fest in die Sprache
+                eingebaute Operatoren</p>
+            <p>Referenztypen sind zb Klassen, Interfaces oder Felder (arrays). sie müssen mit new
+                angelegt werden <br>
+                Merkmal: Ihr Wert ist eine Referenz einer Speicherstelle die auf ein Objekte Zeigt</p>
+        </div>
+        <div>
+            <h3>Klassen</h3>
+            <p>Eine Klasse legt Instanzvariablen und Methoden fest</p>
+            <p>jede Instanz kann ihre eignen <b>Instanzvariablen</b> festlegen indem sie bei aufruf
+                new festliegt werden können <br> <b>Klassenvariblen</b> sind jedoch bei allen objekten gleich und sind deshalb static (objektunabhängig)</p>
+            <p>Eine Klasse legt jedoch auch schon die Implementierung feat, anders wie Interfaces wo nur das gerüst der Klasse fest steht</p>
+        </div>
+        <div>
+            <h3>Interfaces</h3>
+            <p>Instanzvariablen sind nicht erlaubt, klassenvarablen schon. Intefaces besitzen keinen Konstruktor</p>
+            <p>mit dem S <b>default</b> dürfen wir methoden vordefinieren. sonst sieht eine methode so aus: void move(double x, double y);
+                methoden ohne Implementierung werden auch abstrakte methoden genannt</p>
+            <p>es dürfen auch Statische methoden vordefiert werden. diese brauchen das S default nicht: static double kugelVolumen(double radius) {};</p>
+            <p>eine Klasse implementiert ein Interface, indem alle abstrakten methoden des Interfaces definiert werden.
+                das inteface wird mit dem S <b>implements</b> eingebunden</p>
+            </p>
+        </div>
+        <div>
+            <h3>Dynamische Bindung</h3>
+            <p>angenommen wir definieren ein Interface mit einer default methode, die für 2 klassen benutz wird.
+                und wir erstellen jeweils eine instanz mit gleichem variablen namen und rufen die methode anschließend auf, dann
+                weiß der compiler erst zur laufzeit von welcher instanz die methode aufgerufen wird</p>
+            </p>
+            <p>in C++ müssen Methode bei denen wir wissen dass sie dynamisch gebunden werden mit dem S <b>virtual</b> versehen werden</p>
+        </div>
+        <div>
+            <h3>Vererbung</h3>
+            <p>mit Vererbung lassen sich gegebene klassen erweitern</p>
+            <p>zum Beispiel durch zusätzliche Instanzvarablen, zusätzliche Methoden oder Überschriebenen Methoden,
+                wobei die Variablen und Methoden der Oberklasse nicht erneut in der Kindklasse aufgeführt werden.
+                da reicht das "KindKlasse <b>extends</b> Oberklasse"
+                Konstruktor einer Kindklasse ruft Konstruktor der Oberklasse auf mit <b>super()</b>
+                public Student(String n,
+                int j, String hs) {
+                super(n, j);
+                     hochschule = hs;
+                   }
+                   hier ist nur hochschule eine Instanzvariable der Kindklasse
+            </p>
+            <p>beim Überschreiben von methoden müssen einege sachen beachtet werden: <br>
+                - Der Rückgabetyp der Methode muss gleich sein <br>
+                - Der Methodenname muss gleich sein <br>
+                - Die Parameterliste muss gleich sein <br>
+
+                mit der Annotation <b>@Override</b> können wir sicherstellen dass die Methode auch wirklich richtig
+                überschrieben wird
+
+            <p> public void print() { <br>
+                    System.out.print(name + "; " + gebJahr);<br>
+                } <br> <br>
+            in der Kindklasse: <br>
+            @Override <br>
+            public void print() { <br>
+                super.print(); <br>
+                System.out.print("; immatr an " + hochschule); <br>
+            } <br>
+            <p>das Schlüsselwort <b>final</b> verhinder Überschreibung</p>
+            <p>Überladen einer Methode:
+                Definition einer Methode in der Kindklasse mit gleichem Namen aber anderer Parameterliste</p>
+            <p>die klasse Objekt ist Oberklasse jeder Klasse in Java</p>
+            <p>in Ihr sind Methoden definiert wie: equals, clone, toString, hashCode
+                diese Methoden können in jeder Klasse überschrieben werden
+            Beispiel: die equals methode vergleicht nur die Referenzen. möchten wir aber den
+            inhalt auf Gleichheit überprüfen müssen wir die Methode überschreiben</p>
+            </p>
+        </div>
+        <div>
+            <h3>Abstrakte Klasse</h3>
+            <p>eine Abstrakte Klasse ist eine klasse mit dem Schlüsselwort <b>abstract</b> sie darf nicht instanziewrt werden sondern nur als oberklasse dienen</p>
+            <p>Merkmal: in Ihr werden abstrakte Methoden formuliert, die ebenfalls das Schlüsselwort <b>abstract</b> haben: public abstract double getArea();</p>
+            <p>sie können abert auch schon komplett defineirte Methoden mitbringen</p>
+            </p>
+        </div>
+        <div>
+            <h3>Immutable Klassen</h3>
+            <p>Merkmlale: Werte eines Objekts sind nicht mehr änderbar, nachdem sie konstruiert wurden. Beispiel: Klasse String ist eine immutable Klasse</p>
+            <p>Wie kann ich eine Klasse Immutabel machen: <br>
+                - Instanzvariablen als final deklarieren <br>
+                - Vererbung verbieten durch final class, Damit kann die Klasse nicht um mutable Anteile erweitert werden.
+
+                Wenn wir jetzt zum Beispiel eine Schleife haben, die strings 100 mal aneinander hängt, dann wird jedes mal ein neuer String erstellt, da der alte nicht mehr verändert werden kann <br>
+                Das hat zur folge: einen hohen kopieraufwand und viel Garbage Collection;
+
+                Lösung: StringBuilder Klasse, die mutable ist und nicht so viel kopiert,
+                dort kann man einfach mit append() die Strings aneinander hängen
+
+            </p>
+        </div>
+
+
+    </section>
+</body>
+</html>
